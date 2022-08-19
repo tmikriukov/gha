@@ -1,0 +1,49 @@
+# name: Deploy
+
+# # on:
+# #   pull_request:
+# #     types: [reopened]
+# #   push:
+# #     branches:
+#       # - master
+#   # release:
+#     # types: [published,unpublished,created,edited,deleted,prereleased,released]
+
+# on:
+#   workflow_call:
+#     secrets:
+#       token:
+#         required: true
+#     inputs:
+#       env:
+#         required: true
+#         type: string
+
+# jobs:
+#   deploy:
+#     #environment: ${{ input.env }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       # - run: echo ${{ github.event_name == 'release' && 'prod' || 'stage' }}
+#       # - run: echo ${{ github.event_name }}
+#       # - run: echo '${{ toJSON(github.event) }}'
+#       - run: echo '${{ input.env }}'
+
+name: Reusable workflow example
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    environment: prod-1
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo '${{ toJSON(github) }}'
+      - run: echo '${{ toJSON(secrets) }}'
+      
+    
