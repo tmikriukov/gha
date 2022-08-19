@@ -1,0 +1,26 @@
+name: Deploy
+
+# on:
+#   pull_request:
+#     types: [reopened]
+#   push:
+#     branches:
+      # - master
+  # release:
+    # types: [published,unpublished,created,edited,deleted,prereleased,released]
+
+inputs:
+  env:
+    required: true
+    default: "aaaa"
+    type: string
+
+runs:
+  using: "composite"
+
+  steps:
+    steps:
+      # - run: echo ${{ github.event_name == 'release' && 'prod' || 'stage' }}
+      # - run: echo ${{ github.event_name }}
+      # - run: echo '${{ toJSON(github.event) }}'
+      - run: echo '${{ input.env }}'
