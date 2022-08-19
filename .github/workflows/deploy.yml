@@ -40,7 +40,7 @@ on:
 
 jobs:
   deploy:
-    environment: prod-1
+    environment: prod
     runs-on: ubuntu-latest
     steps:
       - run: echo '${{ toJSON(github) }}'
